@@ -1,1 +1,23 @@
 GET  http://localhost:8000/user
+
+
+GET  http://localhost:8000/user/dodiyampavankumar2001@gmail.com
+
+
+POST http://localhost:8000/user
+Content-Type:application/json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "image": "http://example.com/john.jpg"
+}
+
+POST http://localhost:8000/post
+Content-Type:application/json
+{
+  "postText": "sample post",
+  "createdAt": "2343242435",
+  "createdBy": "666972004f0caa0a078b7546",
+  "imageUrl": "sample url"
+  
+}
