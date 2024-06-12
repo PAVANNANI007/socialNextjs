@@ -1,6 +1,7 @@
 import { UserDetailContext } from "@/app/_context/UserDetailContext";
 import GlobalApi from "@/app/_utils/GlobalApi";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
 import { useUser } from "@clerk/nextjs";
 import { Image, Send, Video } from "lucide-react";
 import React, { useContext, useState } from "react";
@@ -9,16 +10,32 @@ function WritePost() {
   const { user } = useUser();
   const [userInputPost, setUserInputPost] = useState(""); // Correctly use useState
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
+  const {toast} = useToast()
   console.log(userDetail)
   const onCreatePost = () => {
     const data = {
       postText: userInputPost,
       createdAt: Date.now().toString(),
-      createdBy: userDetail._id,
+      createdBy: userDetail._id, 
     };
     GlobalApi.createPost(data).then((resp) => {
         setUserInputPost("")
-    });
+        if(resp){
+            toast({
+                title: "Awesome!",
+                description: "Your Post Publish successfully",
+                 variant:"success"
+              })
+            
+        }
+    },(error)=>{
+        toast({
+            title: "Ooops!!",
+            description: "Some server side error",
+            variant:"destructive"
+          })
+    }
+);
   };
 
   if (!user) {

@@ -8,9 +8,11 @@ const axioClient=axios.create({
 const createuser = (data)=>axioClient.post('/user', data)
 const getUserByEmail = (email)=>axioClient.get('/user/'+email)
 const createPost = (data)=>axioClient.post('/post',data)
+const getAllPosts = (data)=>axioClient.get('/post')
 
 export default{
      createuser,
      getUserByEmail,
-     createPost
+     createPost,
+     getAllPosts
 }
