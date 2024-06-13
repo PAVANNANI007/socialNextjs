@@ -6,7 +6,7 @@ import { useUser } from '@clerk/nextjs'
 import WritePost from './_components/WritePost'
 import PostList from './_components/PostList'
 import GlobalApi from '@/app/_utils/GlobalApi'
-import { get } from 'mongoose'
+
 
 function Home() {
   const {user} = useUser()
