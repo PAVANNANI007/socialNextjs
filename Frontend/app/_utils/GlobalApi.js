@@ -8,11 +8,16 @@ const axioClient=axios.create({
 const createuser = (data)=>axioClient.post('/user', data)
 const getUserByEmail = (email)=>axioClient.get('/user/'+email)
 const createPost = (data)=>axioClient.post('/post',data)
-const getAllPosts = (data)=>axioClient.get('/post')
+const getAllPosts = ()=>axioClient.get('/post')
+const onPostLike = (postId, data)=>axioClient.put('/post/like/'+postId,data)
+const addComment = (data)=>axioClient.post('/comment',data)
+
 
 export default{
      createuser,
      getUserByEmail,
      createPost,
-     getAllPosts
+     getAllPosts,
+     onPostLike,
+     addComment
 }

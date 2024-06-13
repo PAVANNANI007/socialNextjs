@@ -23,3 +23,11 @@ Content-Type:application/json
   "imageUrl": "sample url"
   
 }
+
+curl -X PUT http://localhost:8000/post/like/666972004f0caa0a078b7546 \
+-H "Content-Type: application/json" \
+-d '{
+  "userId": "666972004f0caa0a078b7546",
+  "isLike": true
+}'
+

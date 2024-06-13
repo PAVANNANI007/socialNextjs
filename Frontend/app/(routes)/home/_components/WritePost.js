@@ -6,7 +6,7 @@ import { useUser } from "@clerk/nextjs";
 import { Image, Send, Video } from "lucide-react";
 import React, { useContext, useState } from "react";
 
-function WritePost() {
+function WritePost({getAllPosts}) {
   const { user } = useUser();
   const [userInputPost, setUserInputPost] = useState(""); // Correctly use useState
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
@@ -21,6 +21,7 @@ function WritePost() {
     GlobalApi.createPost(data).then((resp) => {
         setUserInputPost("")
         if(resp){
+          getAllPosts();
             toast({
                 title: "Awesome!",
                 description: "Your Post Publish successfully",
