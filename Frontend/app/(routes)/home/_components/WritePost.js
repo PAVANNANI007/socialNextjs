@@ -16,7 +16,7 @@ function WritePost({getAllPosts}) {
     const data = {
       postText: userInputPost,
       createdAt: Date.now().toString(),
-      createdBy: userDetail._id, 
+      createdBy: userDetail?._id, 
     };
     GlobalApi.createPost(data).then((resp) => {
         setUserInputPost("")
